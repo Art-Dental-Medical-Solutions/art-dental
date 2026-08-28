@@ -604,7 +604,12 @@
         </div>
 
         <div class="contact-form" data-reveal>
-          <form id="contactForm">
+          <form id="contactForm" action="https://formsubmit.co/arthur.ami.iacob@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Programare nouă — Art Dental &amp; Medical Solutions">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://art-dental-medical-solutions.github.io/art-dental/?sent=1#contact">
+            <input type="hidden" name="_url" value="https://art-dental-medical-solutions.github.io/art-dental/">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
             <div class="form-row">
               <div class="field">
                 <label for="name">Nume complet</label>
@@ -617,7 +622,7 @@
             </div>
             <div class="field">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="nume@exemplu.ro">
+              <input type="email" id="email" name="email" placeholder="nume@exemplu.ro" required>
             </div>
             <div class="field">
               <label for="service">Serviciu de interes</label>
@@ -896,35 +901,19 @@ window.SITE_CONFIG = {
 
   const form = document.getElementById('contactForm');
   const successEl = document.getElementById('formSuccess');
-  const successText = successEl.querySelector('span');
-  const submitButton = form.querySelector('button[type="submit"]');
-  const clinicEmail = (siteConfig.clinicEmail || '').trim();
+  const successText = successEl ? successEl.querySelector('span') : null;
 
-  if (!clinicEmail) submitButton.textContent = 'Pregătește cererea';
-
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const service = document.getElementById('service').value;
-    const message = document.getElementById('message').value.trim();
-
-    const plainText = `Nume: ${name}\nTelefon: ${phone}\nEmail: ${email}\nServiciu: ${service}\n\nMesaj:\n${message}`;
-    const subject = encodeURIComponent(`Programare — ${service}`);
-    const body = encodeURIComponent(plainText);
-
-    if (clinicEmail) {
-      successText.textContent = 'Se deschide clientul tău de email pentru a trimite cererea de programare.';
-      successEl.style.display = 'flex';
-      window.location.href = `mailto:${clinicEmail}?subject=${subject}&body=${body}`;
-      return;
-    }
-
-    try { await navigator.clipboard.writeText(plainText); } catch (_) {}
-    successText.textContent = 'Cererea a fost pregătită. Pentru programare, sună la 0744 774 578 sau 0753 562 721. Poți adăuga ulterior emailul clinicii în site-config.js.';
+  // FormSubmit redirects back with ?sent=1 after a successful submission.
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('sent') === '1' && successEl && successText) {
+    successText.textContent = 'Mulțumim! Cererea de programare a fost trimisă. Te vom contacta în cel mai scurt timp.';
     successEl.style.display = 'flex';
-  });
+    // Remove ?sent=1 from the address bar after showing the confirmation.
+    if (history.replaceState) {
+      history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+    }
+  }
+
 
   // Scroll reveal
   const revealEls = document.querySelectorAll('[data-reveal]');
