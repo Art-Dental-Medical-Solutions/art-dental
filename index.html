@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art Dental &amp; Medical Solutions — Clinică de stomatologie</title>
+<meta name="description" content="Art Dental &amp; Medical Solutions — stomatologie generală, chirurgie oro-maxilo-facială, implantologie, estetică dentară, endodonție și stomatologie pentru copii.">
+<meta name="theme-color" content="#1F4E49">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#132A38;
+    --ink-soft:#3F5563;
+    --paper:#FAF6EF;
+    --paper-alt:#F1EADB;
+    --card:#FFFFFF;
+    --teal:#2E6F68;
+    --teal-deep:#1F4E49;
+    --amber:#C4884C;
+    --line: rgba(19,42,56,0.14);
+    --line-soft: rgba(19,42,56,0.08);
+    --shadow: 0 20px 45px -25px rgba(19,42,56,0.35);
+    --radius: 18px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Public Sans', system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    margin:0;
+    color:var(--ink);
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--teal-deep);
+  }
+  .eyebrow::before{
+    content:""; width:20px; height:1px; background:var(--teal-deep); display:inline-block;
+  }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:14px 26px; border-radius:999px; font-weight:600; font-size:15px;
+    text-decoration:none; cursor:pointer; border:1px solid transparent;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    font-family:'Public Sans', sans-serif;
+  }
+  .btn-primary{ background:var(--teal-deep); color:#fff; }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 14px 28px -12px rgba(31,78,73,0.55); }
+  .btn-ghost{ background:transparent; color:var(--ink); border-color:var(--line); }
+  .btn-ghost:hover{ border-color:var(--ink); }
+  .btn-light{ background:#fff; color:var(--teal-deep); }
+  .btn-light:hover{ transform:translateY(-2px); box-shadow:0 14px 28px -12px rgba(0,0,0,0.35); }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,246,239,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  nav.wrap{
+    position:relative;
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:18px; padding-bottom:18px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .brand-mark{
+    width:38px; height:38px; border-radius:50%;
+    background:var(--teal-deep);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .brand-mark svg{ width:20px; height:20px; }
+  .brand-name{
+    font-family:'Fraunces', serif; font-size:17px; font-weight:600; color:var(--ink);
+    line-height:1.15;
+  }
+  .brand-name span{ display:block; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); font-weight:400; margin-top:2px;}
+  .nav-links{ display:flex; align-items:center; gap:34px; list-style:none; margin:0; padding:0; }
+  .nav-links a{ text-decoration:none; font-size:14.5px; font-weight:500; color:var(--ink-soft); transition:color .15s;}
+  .nav-links a:hover{ color:var(--teal-deep); }
+  .nav-cta{ display:flex; align-items:center; gap:18px; }
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
+  .nav-toggle svg{ width:24px; height:24px; }
+  .nav-toggle:focus-visible, .btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{ outline:3px solid rgba(196,136,76,.55); outline-offset:3px; }
+
+  /* ---------- HERO ---------- */
+  .hero{ position:relative; overflow:hidden; padding:76px 0 40px; }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;
+  }
+  .hero h1{ font-size:clamp(38px,5vw,60px); line-height:1.04; margin:20px 0 22px; }
+  .hero h1 em{ font-style:italic; color:var(--teal-deep); }
+  .hero p.lead{ font-size:18px; color:var(--ink-soft); max-width:480px; margin-bottom:32px; }
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+  .hero-stats{ display:flex; gap:34px; margin-top:46px; }
+  .hero-stat b{ display:block; font-family:'Fraunces',serif; font-size:26px; font-weight:600;}
+  .hero-stat span{ font-size:13px; color:var(--ink-soft); }
+  .smile-arc{ margin-top:44px; width:100%; max-width:520px; }
+
+  .hero-visual{ position:relative; }
+  .hero-visual .frame{
+    position:relative; border-radius:26px; overflow:hidden;
+    background:var(--teal-deep);
+    box-shadow:var(--shadow);
+    aspect-ratio: 4/5;
+  }
+  .hero-visual .frame img{ width:100%; height:100%; object-fit:cover; opacity:.94; }
+  .hero-badge{
+    position:absolute; left:-26px; bottom:26px;
+    background:#fff; border-radius:16px; padding:16px 20px;
+    box-shadow:0 18px 34px -16px rgba(19,42,56,0.4);
+    display:flex; gap:12px; align-items:center; max-width:260px;
+  }
+  .hero-badge img{ width:44px; height:44px; border-radius:10px; object-fit:cover; flex-shrink:0;}
+  .hero-badge b{ display:block; font-size:13px; font-family:'Fraunces',serif; font-weight:600;}
+  .hero-badge span{ font-size:11.5px; color:var(--ink-soft); }
+
+  section{ padding:96px 0; }
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .section-head h2{ font-size:clamp(28px,3.4vw,40px); margin-top:16px; }
+  .section-head p{ color:var(--ink-soft); font-size:16px; margin-top:16px; }
+  .section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background:var(--paper-alt); position:relative; }
+  .about-grid{ display:grid; grid-template-columns:.9fr 1.1fr; gap:64px; align-items:start; }
+  .about-copy p{ color:var(--ink-soft); margin:0 0 18px; font-size:16px; }
+  .about-list{ list-style:none; margin:32px 0 0; padding:0; display:grid; gap:16px; }
+  .about-list li{ display:flex; gap:14px; align-items:flex-start; font-size:15px; color:var(--ink);}
+  .about-list svg{ width:20px; height:20px; flex-shrink:0; margin-top:2px; color:var(--teal-deep);}
+  .about-figure{ position:relative; }
+  .about-figure .cert-card{
+    background:var(--card); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
+    border:1px solid var(--line-soft);
+  }
+  .about-figure .cert-card img{ width:100%; }
+  .cert-caption{ padding:22px 26px; }
+  .cert-caption .eyebrow{ margin-bottom:10px; }
+  .cert-caption h3{ font-size:19px; margin-bottom:6px; }
+  .cert-caption p{ color:var(--ink-soft); font-size:14.5px; margin:0; }
+
+  /* ---------- TEAM ---------- */
+  .team-grid{ display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+  .doctor-card{
+    background:var(--card); border-radius:var(--radius); overflow:hidden;
+    border:1px solid var(--line-soft); box-shadow:var(--shadow);
+    display:flex; flex-direction:column;
+  }
+  .doctor-photo{ aspect-ratio:4/3.4; overflow:hidden; }
+  .doctor-photo img{ width:100%; height:100%; object-fit:cover; }
+  .doctor-body{ padding:28px 30px 30px; }
+  .doctor-body .role{ color:var(--teal-deep); font-weight:600; font-size:13.5px; letter-spacing:.03em; text-transform:uppercase; }
+  .doctor-body h3{ font-size:23px; margin:8px 0 10px; }
+  .doctor-body .specialty{ color:var(--ink-soft); font-size:14.5px; margin-bottom:18px; }
+  .doctor-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+  .doctor-tags span{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; padding:5px 10px;
+    border-radius:999px; background:var(--paper-alt); color:var(--teal-deep); border:1px solid var(--line-soft);
+  }
+  .doctor-contact{
+    display:flex; align-items:center; justify-content:space-between;
+    border-top:1px solid var(--line-soft); padding-top:18px;
+  }
+  .doctor-contact a{ text-decoration:none; font-weight:600; font-size:14.5px; display:flex; align-items:center; gap:8px; color:var(--ink);}
+  .doctor-contact svg{ width:16px; height:16px; color:var(--teal-deep);}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); border-radius:var(--radius); overflow:hidden;}
+  .service-tile{ background:var(--card); padding:32px 26px; }
+  .service-tile .num{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--amber); }
+  .service-tile .icon{ width:34px; height:34px; margin:16px 0 18px; color:var(--teal-deep);}
+  .service-tile h3{ font-size:17px; margin-bottom:8px; }
+  .service-tile p{ font-size:13.8px; color:var(--ink-soft); margin:0; }
+
+  /* ---------- PRICING ---------- */
+  .pricing{ background:var(--teal-deep); color:#F4F1E8; }
+  .pricing .section-head h2, .pricing .eyebrow, .pricing .section-head p{ color:#F4F1E8; }
+  .pricing .eyebrow::before{ background:#F4F1E8; }
+  .pricing .section-head p{ opacity:.75; }
+  .price-controls{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:26px; align-items:center; justify-content:space-between; }
+  .price-search{ position:relative; flex:1; min-width:240px; max-width:360px; }
+  .price-search input{
+    width:100%; padding:13px 16px 13px 42px; border-radius:999px; border:1px solid rgba(244,241,232,0.25);
+    background:rgba(244,241,232,0.08); color:#F4F1E8; font-size:14px; font-family:'Public Sans',sans-serif;
+  }
+  .price-search input::placeholder{ color:rgba(244,241,232,0.55); }
+  .price-search svg{ position:absolute; left:15px; top:50%; transform:translateY(-50%); width:16px; height:16px; opacity:.6;}
+  .price-tabs{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:30px; }
+  .price-tab{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.03em;
+    padding:9px 16px; border-radius:999px; border:1px solid rgba(244,241,232,0.25);
+    background:transparent; color:rgba(244,241,232,0.75); cursor:pointer; transition:.15s;
+  }
+  .price-tab.active, .price-tab:hover{ background:#F4F1E8; color:var(--teal-deep); border-color:#F4F1E8; }
+  .price-category{ margin-bottom:8px; }
+  .price-category-title{
+    display:flex; align-items:baseline; gap:14px; padding:22px 0 12px;
+    border-bottom:1px solid rgba(244,241,232,0.18);
+  }
+  .price-category-title h3{ font-size:20px; color:#F4F1E8; }
+  .price-category-title span{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; opacity:.55;}
+  .price-row{
+    display:flex; align-items:baseline; justify-content:space-between; gap:24px;
+    padding:14px 0; border-bottom:1px solid rgba(244,241,232,0.1);
+  }
+  .price-row .label{ font-size:15px; }
+  .price-row .note{ display:block; font-size:12.5px; opacity:.55; margin-top:3px; }
+  .price-row .value{ font-family:'IBM Plex Mono',monospace; font-size:15px; white-space:nowrap; color:var(--amber); font-weight:500;}
+  .price-empty{ padding:40px 0; text-align:center; opacity:.6; font-family:'IBM Plex Mono',monospace; font-size:13px; display:none;}
+  .price-fx-note{ margin-top:28px; font-size:12.5px; opacity:.55; font-family:'IBM Plex Mono',monospace;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{ display:grid; grid-template-columns:.85fr 1.15fr; gap:56px; }
+  .contact-info-card{
+    background:var(--ink); color:#F4F1E8; border-radius:var(--radius); padding:38px 34px;
+    display:flex; flex-direction:column; gap:26px; height:fit-content;
+  }
+  .contact-info-card h3{ color:#F4F1E8; font-size:22px; }
+  .info-item{ display:flex; gap:14px; align-items:flex-start; }
+  .info-item svg{ width:18px; height:18px; margin-top:3px; color:var(--amber); flex-shrink:0;}
+  .info-item b{ display:block; font-size:14px; margin-bottom:3px;}
+  .info-item span, .info-item a{ font-size:14px; opacity:.78; text-decoration:none; color:#F4F1E8; }
+  .location-list{ display:grid; gap:12px; }
+  .location-entry{ display:block; }
+  .location-entry strong{ display:block; font-size:13px; margin-bottom:2px; color:#F4F1E8; }
+  .location-entry a{ display:inline; text-decoration:underline; text-decoration-color:rgba(244,241,232,0.3); text-underline-offset:3px; }
+  .location-entry a:hover{ opacity:1; text-decoration-color:var(--amber); }
+  .info-divider{ height:1px; background:rgba(244,241,232,0.15); }
+  .hours-row{ display:flex; justify-content:space-between; font-size:13.5px; opacity:.85; padding:4px 0;}
+
+  .contact-form{
+    background:var(--card); border:1px solid var(--line-soft); border-radius:var(--radius);
+    padding:38px; box-shadow:var(--shadow);
+  }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .field{ margin-bottom:20px; }
+  .field label{ display:block; font-size:13px; font-weight:600; margin-bottom:8px; }
+  .field input, .field select, .field textarea{
+    width:100%; padding:13px 14px; border-radius:10px; border:1px solid var(--line);
+    font-family:'Public Sans',sans-serif; font-size:14.5px; background:#fff; color:var(--ink);
+  }
+  .field textarea{ resize:vertical; min-height:110px; }
+  .field input:focus, .field select:focus, .field textarea:focus{ outline:2px solid var(--teal); outline-offset:1px; }
+  .form-foot{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-top:8px;}
+  .form-note{ font-size:12.5px; color:var(--ink-soft); max-width:280px; }
+  .form-success{
+    display:none; align-items:center; gap:10px; background:#EAF3EF; color:var(--teal-deep);
+    padding:14px 18px; border-radius:12px; font-size:14px; font-weight:500; margin-top:18px;
+  }
+  .form-success svg{ width:18px; height:18px; flex-shrink:0;}
+
+  footer{ background:var(--ink); color:rgba(244,241,232,0.7); padding:56px 0 28px; }
+  .footer-top{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:32px; padding-bottom:36px; border-bottom:1px solid rgba(244,241,232,0.12);}
+  .footer-brand .brand-name{ color:#F4F1E8; }
+  .footer-brand .brand-name span{ color:rgba(244,241,232,0.55); }
+  .footer-links{ display:flex; gap:52px; flex-wrap:wrap; }
+  .footer-links h4{ font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:rgba(244,241,232,0.5); margin-bottom:14px; font-weight:600;}
+  .footer-links ul{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+  .footer-links a{ text-decoration:none; font-size:14px; color:rgba(244,241,232,0.78); }
+  .footer-links a:hover{ color:#fff; }
+  .footer-bottom{ display:flex; justify-content:space-between; padding-top:24px; font-size:12.5px; flex-wrap:wrap; gap:10px;}
+
+  [data-reveal]{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+  [data-reveal].is-visible{ opacity:1; transform:translateY(0); }
+
+  @media (max-width:980px){
+    .hero-grid, .about-grid, .contact-grid{ grid-template-columns:1fr; }
+    .hero-visual{ order:-1; max-width:420px; margin:0 auto;}
+    .team-grid{ grid-template-columns:1fr; }
+    .services-grid{ grid-template-columns:repeat(2,1fr); }
+    .nav-cta .btn-ghost{ display:none; }
+    .nav-toggle{ display:block; }
+    .nav-links{
+      display:none; position:absolute; top:calc(100% + 1px); left:20px; right:20px;
+      flex-direction:column; align-items:stretch; gap:0; padding:10px;
+      background:rgba(250,246,239,.98); border:1px solid var(--line); border-radius:16px;
+      box-shadow:var(--shadow);
+    }
+    .nav-links.is-open{ display:flex; }
+    .nav-links li{ width:100%; }
+    .nav-links a{ display:block; padding:12px 14px; border-radius:10px; }
+    .nav-links a:hover{ background:var(--paper-alt); }
+    .form-row{ grid-template-columns:1fr; }
+    .hero-badge{ left:14px; }
+  }
+  @media (max-width:600px){
+    .wrap{ padding:0 20px; }
+    section{ padding:68px 0; }
+    .services-grid{ grid-template-columns:1fr; }
+    .hero{ padding-top:50px; }
+    .hero-stats{ flex-wrap:wrap; row-gap:20px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    [data-reveal]{ opacity:1; transform:none; transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3c-2.2 0-3.6 1.3-4.8 1.3-1.4 0-2.6-1-3.7-.6C1.9 4.2 1 6.3 1.3 9c.3 2.7 1.6 5.3 2.4 7.7.6 1.9 1 4.7 2.6 4.7 1.5 0 1.6-2.1 2-3.9.3-1.5.7-2.6 1.7-2.6s1.4 1.1 1.7 2.6c.4 1.8.5 3.9 2 3.9 1.6 0 2-2.8 2.6-4.7.8-2.4 2.1-5 2.4-7.7.3-2.7-.6-4.8-2.2-5.3-1.1-.4-2.3.6-3.7.6C15.6 4.3 14.2 3 12 3z" stroke="#F4F1E8" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="brand-name">Art Dental<span>Medical Solutions</span></span>
+    </a>
+    <ul class="nav-links" id="primaryNav">
+      <li><a href="#despre">Despre noi</a></li>
+      <li><a href="#echipa">Echipa</a></li>
+      <li><a href="#servicii">Servicii</a></li>
+      <li><a href="#preturi">Prețuri</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:0744774578" class="btn btn-ghost">Sună acum</a>
+      <a href="#contact" class="btn btn-primary">Programează-te</a>
+    </div>
+    <button class="nav-toggle" aria-label="Deschide meniul" aria-controls="primaryNav" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Stomatologie &amp; chirurgie oro-maxilo-facială</span>
+        <h1>Un zâmbet <em>sănătos</em> începe cu o echipă în care ai încredere.</h1>
+        <p class="lead">La Art Dental &amp; Medical Solutions îmbinăm tehnologia laser și microscopul operator cu o abordare blândă, pentru tratamente precise — de la prevenție și estetică, până la implantologie și chirurgie orală.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Programează o consultație</a>
+          <a href="#preturi" class="btn btn-ghost">Vezi lista de prețuri</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><b>2</b><span>medici stomatologi</span></div>
+          <div class="hero-stat"><b>9</b><span>specializări &amp; tratamente</span></div>
+          <div class="hero-stat"><b>Harvard</b><span>certificare continuă</span></div>
+        </div>
+        <svg class="smile-arc" viewBox="0 0 520 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M4 6C90 60 430 60 516 6" stroke="#2E6F68" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="1 10"/>
+        </svg>
+      </div>
+      <div class="hero-visual">
+        <div class="frame">
+          <img src="assets/dr-iacob.jpg" alt="Dr. Iacob Mirela Loredana, medic stomatolog, în cabinet">
+        </div>
+        <div class="hero-badge">
+          <img src="assets/harvard-cert.jpg" alt="Certificat Harvard School of Dental Medicine" loading="lazy">
+          <div>
+            <b>Certificare Harvard</b>
+            <span>Regenerare în parodontologie &amp; implantologie, Oct. 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="despre">
+    <div class="wrap about-grid">
+      <div data-reveal>
+        <span class="eyebrow">Despre noi</span>
+        <h2 style="margin-top:16px;">Îngrijire dentară modernă, cu suflet de clinică de cartier.</h2>
+        <div class="about-copy" style="margin-top:22px;">
+          <p>Art Dental &amp; Medical Solutions este un cabinet de stomatologie generală și chirurgie oro-maxilo-facială, gândit pentru pacienți de toate vârstele — de la prima vizită a celor mici, până la reabilitări complexe pe implant.</p>
+          <p>Lucrăm cu tehnologie laser BIOLASE, microscop operator pentru tratamente de precizie și protocoale actualizate constant prin cursuri internaționale de educație medicală continuă, pentru ca fiecare tratament să fie cât mai puțin invaziv și cât mai confortabil.</p>
+        </div>
+        <ul class="about-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Tratamente asistate de microscop și laser BIOLASE, pentru precizie și recuperare rapidă.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Program dedicat „Junior" pentru copii, cu tarife și abordare adaptate lor.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Echipă formată continuu prin cursuri internaționale, precum Harvard School of Dental Medicine.</span>
+          </li>
+        </ul>
+      </div>
+      <div class="about-figure" data-reveal>
+        <div class="cert-card">
+          <img src="assets/harvard-cert.jpg" alt="Diplomă Harvard School of Dental Medicine pentru Dr. Mirela Loredana Iacob" loading="lazy">
+          <div class="cert-caption">
+            <span class="eyebrow">Educație medicală continuă</span>
+            <h3>Mastering Regeneration in Periodontics and Implantology</h3>
+            <p>Curs de 5 zile susținut de Harvard School of Dental Medicine, absolvit de Dr. Iacob Mirela Loredana în octombrie 2025.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="echipa">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Echipa medicală</span>
+        <h2>Medicii care au grijă de zâmbetul tău</h2>
+        <p>Doi medici stomatologi, două specializări complementare — pregătiți să te asculte, să-ți explice opțiunile și să te ghideze spre tratamentul potrivit.</p>
+      </div>
+      <div class="team-grid">
+        <div class="doctor-card" data-reveal>
+          <div class="doctor-photo"><img src="assets/dr-iacob.jpg" alt="Dr. Iacob Mirela Loredana" loading="lazy"></div>
+          <div class="doctor-body">
+            <span class="role">Medic stomatolog</span>
+            <h3>Dr. Iacob Mirela Loredana</h3>
+            <p class="specialty">Medic specialist chirurgie oro-maxilo-facială</p>
+            <div class="doctor-tags">
+              <span>Chirurgie orală</span>
+              <span>Implantologie</span>
+              <span>Certificare Harvard</span>
+            </div>
+            <div class="doctor-contact">
+              <a href="tel:0744774578">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 5c0-1 1-2 2-2h2l2 5-2 1.5c1 2.5 3 4.5 5.5 5.5L15 13l5 2v2c0 1-1 2-2 2C10.5 19 4 12.5 4 5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                0744 774 578
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="doctor-card" data-reveal>
+          <div class="doctor-photo"><img src="assets/dr-mertic.jpg" alt="Dr. Mertic Maria-Alexandra" loading="lazy"></div>
+          <div class="doctor-body">
+            <span class="role">Medic stomatolog</span>
+            <h3>Dr. Mertic Maria-Alexandra</h3>
+            <p class="specialty">Stomatologie generală &amp; estetică dentară</p>
+            <div class="doctor-tags">
+              <span>Stomatologie generală</span>
+              <span>Estetică dentară</span>
+              <span>Pacienți Junior</span>
+            </div>
+            <div class="doctor-contact">
+              <a href="tel:0753562721">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 5c0-1 1-2 2-2h2l2 5-2 1.5c1 2.5 3 4.5 5.5 5.5L15 13l5 2v2c0 1-1 2-2 2C10.5 19 4 12.5 4 5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                0753 562 721
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="servicii" style="background:var(--paper-alt);">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Servicii</span>
+        <h2>Tratamente complete, sub același acoperiș</h2>
+        <p>De la controlul de rutină, la reabilitări complexe — fiecare etapă a sănătății tale orale, într-un singur cabinet.</p>
+      </div>
+      <div class="services-grid" data-reveal>
+        <div class="service-tile">
+          <span class="num">01</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 3c-2.2 0-3.6 1.3-4.8 1.3-1.4 0-2.6-1-3.7-.6C1.9 4.2 1 6.3 1.3 9c.3 2.7 1.6 5.3 2.4 7.7.6 1.9 1 4.7 2.6 4.7 1.5 0 1.6-2.1 2-3.9.3-1.5.7-2.6 1.7-2.6s1.4 1.1 1.7 2.6c.4 1.8.5 3.9 2 3.9 1.6 0 2-2.8 2.6-4.7.8-2.4 2.1-5 2.4-7.7.3-2.7-.6-4.8-2.2-5.3-1.1-.4-2.3.6-3.7.6C15.6 4.3 14.2 3 12 3z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          <h3>Prevenție &amp; igienă</h3>
+          <p>Detartraj, periaj profesional, sigilări și fluorizări pentru un zâmbet protejat.</p>
+        </div>
+        <div class="service-tile">
+          <span class="num">02</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 4.9L20 8l-4 3.9.9 5.5L12 14.9 7.1 17.4 8 11.9 4 8l5.6-1.1L12 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          <h3>Estetică &amp; albire</h3>
+          <p>Albire laser BIOLASE, gutiere Opalescence și fațete pentru un zâmbet luminos.</p>
+        </div>
+        <div class="service-tile">
+          <span class="num">03</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-9.5-9C1 8.5 2 5 5 4c2-.6 3.5.6 4.7 2C11 4.6 12.5 3.4 14.5 4c3 1 4 4.5 2.5 8-2.5 4.4-5 9-5 9z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          <h3>Endodonție</h3>
+          <p>Tratamente de canal asistate de microscop, cu sau fără laser endodontic.</p>
+        </div>
+        <div class="service-tile">
+          <span class="num">04</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="16" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="M9 9h6M9 13h6M9 17h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <h3>Protetică</h3>
+          <p>Coroane, fațete, proteze mobilizabile și scheletizate, amprentare digitală.</p>
+        </div>
+        <div class="service-tile">
+          <span class="num">05</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M6 8h12M6 8c0 6 2.5 8 6 8s6-2 6-8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <h3>Implantologie</h3>
+          <p>Implant dentar, lifting sinusal și coroane pe implant, pas cu pas, fără grabă.</p>
+        </div>
+        <div class="service-tile">
+          <span class="num">06</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Chirurgie oro-maxilo-facială</h3>
+          <p>Extracții, chirurgie parodontală laser și regenerare osoasă ghidată.</p>
+        </div>
+        <div class="service-tile">
+          <span class="num">07</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M4 18c2-8 5-13 8-13s6 5 8 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M4 18h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <h3>Ortodonție</h3>
+          <p>Aparate fixe metalice, ceramice, Safir și tehnici invizibile — WIN, Incognito, Invisalign.</p>
+        </div>
+        <div class="service-tile">
+          <span class="num">08</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.4"/><path d="M5 20c1.5-4 4-5.5 7-5.5s5.5 1.5 7 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <h3>Stomatologie Junior</h3>
+          <p>Program dedicat celor mici — educație despre igiena dentară, cu blândețe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="preturi">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Listă de prețuri</span>
+        <h2>Prețuri clare, fără surprize</h2>
+        <p>Caută un tratament sau alege o categorie pentru a vedea tarifele actualizate. Pentru un plan de tratament personalizat, cel mai bine este să vii la o consultație.</p>
+      </div>
+
+      <div class="price-controls" data-reveal>
+        <div class="price-search">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <input type="text" id="priceSearch" placeholder="Caută un tratament…">
+        </div>
+      </div>
+      <div class="price-tabs" id="priceTabs" data-reveal></div>
+      <div id="priceList" data-reveal></div>
+      <p class="price-empty" id="priceEmpty">Niciun tratament găsit. Încearcă un alt termen de căutare.</p>
+      <p class="price-fx-note">* Serviciile marcate în euro se calculează în lei, la cursul valutar din ziua efectuării plății.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Contact</span>
+        <h2>Hai să programăm prima ta vizită</h2>
+        <p>Completează formularul sau sună-ne direct — îți răspundem în cel mai scurt timp pentru a stabili o programare.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info-card" data-reveal>
+          <h3>Art Dental &amp; Medical Solutions</h3>
+          <div class="info-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 5c0-1 1-2 2-2h2l2 5-2 1.5c1 2.5 3 4.5 5.5 5.5L15 13l5 2v2c0 1-1 2-2 2C10.5 19 4 12.5 4 5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <div>
+              <b>Dr. Iacob Mirela Loredana</b>
+              <a href="tel:0744774578">0744 774 578</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 5c0-1 1-2 2-2h2l2 5-2 1.5c1 2.5 3 4.5 5.5 5.5L15 13l5 2v2c0 1-1 2-2 2C10.5 19 4 12.5 4 5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <div>
+              <b>Dr. Mertic Maria-Alexandra</b>
+              <a href="tel:0753562721">0753 562 721</a>
+            </div>
+          </div>
+          <div class="info-divider"></div>
+          <div class="info-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-6-5.7-6-11a6 6 0 1112 0c0 5.3-6 11-6 11z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="2.2" stroke="currentColor" stroke-width="1.5"/></svg>
+            <div>
+              <b>Locații</b>
+              <div class="location-list" id="clinicAddresses">
+                <span class="location-entry">
+                  <strong>Iași</strong>
+                  <a href="https://www.google.com/maps/search/?api=1&amp;query=Strada+Maior+Eremia+Popescu+1%2C+700397+Ia%C8%99i" target="_blank" rel="noopener noreferrer">Strada Maior Eremia Popescu 1, parter, 700397 Iași</a>
+                </span>
+                <span class="location-entry">
+                  <strong>Lețcani</strong>
+                  <a href="https://www.google.com/maps/search/?api=1&amp;query=Strada+Principal%C4%83+122%2C+Le%C8%9Bcani%2C+Ia%C8%99i" target="_blank" rel="noopener noreferrer">Str. Principală nr. 122, parter, Lețcani, Iași</a>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="info-divider"></div>
+          <div>
+            <b style="display:block; font-size:14px; margin-bottom:10px;">Program</b>
+            <div class="hours-row"><span>Luni – Vineri</span><span>09:00 – 19:00</span></div>
+            <div class="hours-row"><span>Sâmbătă</span><span>09:00 – 14:00</span></div>
+            <div class="hours-row"><span>Duminică</span><span>Închis</span></div>
+          </div>
+        </div>
+
+        <div class="contact-form" data-reveal>
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Nume complet</label>
+                <input type="text" id="name" name="name" placeholder="Ex: Ana Popescu" required>
+              </div>
+              <div class="field">
+                <label for="phone">Telefon</label>
+                <input type="tel" id="phone" name="phone" placeholder="07xx xxx xxx" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="nume@exemplu.ro">
+            </div>
+            <div class="field">
+              <label for="service">Serviciu de interes</label>
+              <select id="service" name="service">
+                <option>Consultație primară</option>
+                <option>Prevenție &amp; igienă</option>
+                <option>Estetică &amp; albire</option>
+                <option>Endodonție</option>
+                <option>Protetică</option>
+                <option>Implantologie</option>
+                <option>Chirurgie oro-maxilo-facială</option>
+                <option>Ortodonție</option>
+                <option>Stomatologie Junior</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Mesaj</label>
+              <textarea id="message" name="message" placeholder="Spune-ne pe scurt ce te-a determinat să ne scrii…"></textarea>
+            </div>
+            <div class="form-foot">
+              <span class="form-note">Trimițându-l, ești de acord să te contactăm telefonic sau prin email pentru programare.</span>
+              <button type="submit" class="btn btn-primary">Trimite programarea</button>
+            </div>
+            <div class="form-success" id="formSuccess">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Mulțumim! Se deschide clientul tău de email pentru a trimite cererea de programare.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#top" class="brand" style="margin-bottom:14px; display:inline-flex;">
+          <span class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3c-2.2 0-3.6 1.3-4.8 1.3-1.4 0-2.6-1-3.7-.6C1.9 4.2 1 6.3 1.3 9c.3 2.7 1.6 5.3 2.4 7.7.6 1.9 1 4.7 2.6 4.7 1.5 0 1.6-2.1 2-3.9.3-1.5.7-2.6 1.7-2.6s1.4 1.1 1.7 2.6c.4 1.8.5 3.9 2 3.9 1.6 0 2-2.8 2.6-4.7.8-2.4 2.1-5 2.4-7.7.3-2.7-.6-4.8-2.2-5.3-1.1-.4-2.3.6-3.7.6C15.6 4.3 14.2 3 12 3z" stroke="#F4F1E8" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="brand-name">Art Dental<span>Medical Solutions</span></span>
+        </a>
+        <p style="max-width:280px; font-size:14px; margin-top:10px;">Stomatologie generală și chirurgie oro-maxilo-facială, cu tehnologie laser și microscop operator.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Navigare</h4>
+          <ul>
+            <li><a href="#despre">Despre noi</a></li>
+            <li><a href="#echipa">Echipa</a></li>
+            <li><a href="#servicii">Servicii</a></li>
+            <li><a href="#preturi">Prețuri</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:0744774578">0744 774 578</a></li>
+            <li><a href="tel:0753562721">0753 562 721</a></li>
+            <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Strada+Maior+Eremia+Popescu+1%2C+700397+Ia%C8%99i" target="_blank" rel="noopener noreferrer">Locația Iași</a></li>
+            <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Strada+Principal%C4%83+122%2C+Le%C8%9Bcani%2C+Ia%C8%99i" target="_blank" rel="noopener noreferrer">Locația Lețcani</a></li>
+            <li><a href="#contact">Formular programare</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Art Dental &amp; Medical Solutions. Toate drepturile rezervate.</span>
+      <span>Website creat cu grijă pentru zâmbetul pacienților noștri.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site-config.js"></script>
+<script>
+  // Price list data
+  const priceData = [
+    { cat: "Prevenție & igienă", items: [
+      ["Consultație primară", "100 lei"],
+      ["Model de studiu", "85 lei"],
+      ["Detartraj ultrasonic", "225 lei"],
+      ["Periaj profesional", "100 lei"],
+      ["Air-Flow", "100 lei"],
+      ["Sigilare / dinte", "120 lei"],
+      ["Fluorizare locală", "50 lei"],
+      ["Fluorizare / arcadă", "150 lei"],
+    ]},
+    { cat: "Estetică & albire", items: [
+      ["Tratament albire Laser BIOLASE", "1.500 lei"],
+      ["Albire cu gutiere (Opalescence Boost 38%)", "800 lei"],
+      ["Bijuterie dentară Swarovski", "450 lei", "Diamant: 1.000 lei"],
+      ["Biostimulare ATM Laser BIOLASE", "250 lei"],
+      ["Terapia durerii Laser BIOLASE", "250 lei"],
+      ["Albire internă per dinte", "150 lei", "per ședință"],
+    ]},
+    { cat: "Endodonție", items: [
+      ["Tratamente leziuni carioase / microscop", "180–500 lei"],
+      ["Obturație Glassionomer", "100 lei"],
+      ["Pansament calmant", "85 lei"],
+      ["Pansament devitalizant", "80 lei"],
+      ["Drenaj", "80 lei"],
+      ["Pulpectomie monoradiculară cu obturație / microscop", "300 / 500 lei"],
+      ["Pulpectomie pluriradiculară cu obturație / microscop", "350–450 / 650–700 lei"],
+      ["Tratament gangrenă convențional / microscop", "350 / 700 lei"],
+      ["Tratament Ca(OH)₂", "120 lei"],
+      ["Tratament parodontită apicală cu obturație", "350–700 lei"],
+      ["Tratament laser endodontic", "150 lei", "per ședință"],
+    ]},
+    { cat: "Protetică", items: [
+      ["Reconstituire dinte cu pivot din sticlă", "250 lei"],
+      ["Fațetare directă", "500 lei"],
+      ["Preparații asistate de microscop", "150 lei", "per ședință"],
+      ["Amprentă metodă clasică", "100 lei"],
+      ["Amprentă digitală", "300 lei"],
+      ["Coroană compozit total fizionomică", "400 lei"],
+      ["Coroană metalică turnată", "250 lei"],
+      ["Coroană metalo-ceramică total fizionomică", "550 lei"],
+      ["Coroană integral ceramică (Emax)", "1.500 lei", "CAD/CAM: 800 lei"],
+      ["Fațetă ceramică", "1.500 lei"],
+      ["Coroană ceramică pe suport de zirconiu", "1.500 lei"],
+      ["IOS monoradicular", "200 lei"],
+      ["IOS pluriradicular", "350 lei"],
+      ["Proteză acrilică mobilizabilă", "1.500 lei"],
+      ["Proteză scheletizată", "2.000–6.500 lei"],
+      ["Proteză biodentaplast", "2.800 lei"],
+      ["Recimentare definitivă per element", "50 lei"],
+      ["Ablație dinte", "50 lei"],
+    ]},
+    { cat: "Implantologie", items: [
+      ["Consultație implantologie", "150 lei"],
+      ["Interpretare OPG / CBCT", "100 lei"],
+      ["Implant dentar", "350–700 €"],
+      ["Șurub de vindecare", "100 €"],
+      ["Bont protetic", "100–200 €"],
+      ["Coroană ceramică pe implant", "785 lei"],
+      ["Coroană ceramică pe implant, pe suport de zirconiu", "1.600 lei"],
+      ["Proteză mobilizabilă pe implant (sisteme speciale)", "800 €"],
+      ["Lifting sinusal extern", "4.200 lei"],
+      ["Lifting sinusal intern per implant", "1.000 lei"],
+      ["Inhalosedare", "300 / 600 lei"],
+      ["Coroană provizorie clasică", "150 lei", "PMMA CAD/CAM: 250 lei"],
+    ]},
+    { cat: "Chirurgie", items: [
+      ["Consultație chirurgie", "100 lei"],
+      ["Anestezie", "50 lei"],
+      ["Anestezie prin infiltrație", "50 lei"],
+      ["Sutură", "50 lei"],
+      ["Extracție monoradiculară", "150–195 lei"],
+      ["Alveolotomie", "150 lei"],
+      ["Extracție pluriradiculară", "150–195 lei"],
+      ["Extracție dinte temporar", "120 lei"],
+      ["Decapușonare", "80 lei"],
+      ["Decapușonare LASER", "150 lei"],
+      ["Gingivectomie laser", "450 lei"],
+      ["Extracție molar de minte", "450–1.000 lei"],
+      ["Extracție dinte pluriradicular prin separație radiculară", "200 lei"],
+      ["Rezecție apicală incisiv / canin", "300 lei", "per dinte"],
+      ["Rezecție apicală premolar", "500 lei", "per dinte"],
+      ["Chiuretaj parodontal per dinte", "50 lei"],
+      ["Chiuretaj parodontal LASER", "600 lei", "per ședință"],
+      ["Regularizare creastă / arcadă", "400 lei"],
+      ["Gingivoplastie asistată LASER", "150 lei", "per dinte"],
+      ["Frenectomie LASER", "500 lei"],
+      ["Recoltare factori de creștere (PRF)", "85 lei", "per fiolă"],
+      ["Con colagen condensat", "250 lei"],
+      ["Con colagen condensat cu gentamicină", "350 lei"],
+      ["Membrană", "800–1.200 lei"],
+      ["Os artificial", "250 €", "per cc"],
+      ["Regenerare osoasă dirijată / Lambou", "1.000 lei"],
+    ]},
+    { cat: "Ortodonție", items: [
+      ["Consultație ortodonție", "120 lei"],
+      ["Aparat ortodontic mobil", "700 lei"],
+      ["Aparat fix — bracket metalic / arcadă", "1.700 lei"],
+      ["Aparat fix — bracket metalic autoligaturat / arcadă", "1.700 lei"],
+      ["Aparat fix — bracket ceramic / arcadă", "2.500 lei"],
+      ["Aparat fix — bracket Safir / arcadă", "3.500 lei"],
+      ["Aparat WIN (tehnică linguală, Germania) / arcadă", "2.400 €", "invizibil din exterior"],
+      ["Aparat INCOGNITO / arcadă", "3.000 €"],
+      ["Aparat INVISALIGN / arcadă", "1.800 €"],
+    ]},
+    { cat: "Stomatologie Junior", items: [
+      ["Consultație", "100 lei"],
+      ["Învățare igienă dentară + test placă bacteriană", "100 lei"],
+      ["Detartraj ultrasonic", "110 lei"],
+      ["Periaj profesional", "80 lei"],
+      ["Air-Flow", "100 lei"],
+      ["Sigilare dinte", "90 lei"],
+      ["Fluorizare / arcadă", "90 lei"],
+      ["Tratament endodontic", "65–110 lei"],
+      ["Tratament leziuni carioase", "70–175 lei"],
+      ["Coroane de protecție — zirconiu CAD/CAM", "295 lei"],
+    ]},
+  ];
+
+  const tabsEl = document.getElementById('priceTabs');
+  const listEl = document.getElementById('priceList');
+  const searchEl = document.getElementById('priceSearch');
+  const emptyEl = document.getElementById('priceEmpty');
+  let activeCat = 'Toate';
+
+  function renderTabs(){
+    const cats = ['Toate', ...priceData.map(c => c.cat)];
+    tabsEl.innerHTML = cats.map(c =>
+      `<button class="price-tab${c===activeCat?' active':''}" data-cat="${c}">${c}</button>`
+    ).join('');
+    tabsEl.querySelectorAll('.price-tab').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        activeCat = btn.dataset.cat;
+        renderTabs();
+        renderList();
+      });
+    });
+  }
+
+  function renderList(){
+    const q = searchEl.value.trim().toLowerCase();
+    let html = '';
+    let matches = 0;
+    priceData.forEach(cat=>{
+      if(activeCat !== 'Toate' && activeCat !== cat.cat) return;
+      const items = cat.items.filter(it => !q || it[0].toLowerCase().includes(q));
+      if(items.length === 0) return;
+      matches += items.length;
+      html += `<div class="price-category">
+        <div class="price-category-title"><h3>${cat.cat}</h3><span>${items.length} ${items.length===1?'tratament':'tratamente'}</span></div>`;
+      items.forEach(it=>{
+        html += `<div class="price-row">
+          <span class="label">${it[0]}${it[2] ? `<span class="note">${it[2]}</span>` : ''}</span>
+          <span class="value">${it[1]}</span>
+        </div>`;
+      });
+      html += `</div>`;
+    });
+    listEl.innerHTML = html;
+    emptyEl.style.display = matches === 0 ? 'block' : 'none';
+  }
+
+  searchEl.addEventListener('input', renderList);
+  renderTabs();
+  renderList();
+
+  // Contact form for a static GitHub Pages site.
+  // Add the clinic email/address in assets/site-config.js when available.
+  const siteConfig = window.SITE_CONFIG || {};
+  const clinicAddressesEl = document.getElementById('clinicAddresses');
+  if (clinicAddressesEl && Array.isArray(siteConfig.clinicAddresses) && siteConfig.clinicAddresses.length) {
+    clinicAddressesEl.innerHTML = siteConfig.clinicAddresses.map(loc => {
+      const label = loc.label ? `<strong>${loc.label}</strong>` : '';
+      const address = loc.address || '';
+      const href = loc.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+      return `<span class="location-entry">${label}<a href="${href}" target="_blank" rel="noopener noreferrer">${address}</a></span>`;
+    }).join('');
+  }
+
+  const form = document.getElementById('contactForm');
+  const successEl = document.getElementById('formSuccess');
+  const successText = successEl.querySelector('span');
+  const submitButton = form.querySelector('button[type="submit"]');
+  const clinicEmail = (siteConfig.clinicEmail || '').trim();
+
+  if (!clinicEmail) submitButton.textContent = 'Pregătește cererea';
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const service = document.getElementById('service').value;
+    const message = document.getElementById('message').value.trim();
+
+    const plainText = `Nume: ${name}\nTelefon: ${phone}\nEmail: ${email}\nServiciu: ${service}\n\nMesaj:\n${message}`;
+    const subject = encodeURIComponent(`Programare — ${service}`);
+    const body = encodeURIComponent(plainText);
+
+    if (clinicEmail) {
+      successText.textContent = 'Se deschide clientul tău de email pentru a trimite cererea de programare.';
+      successEl.style.display = 'flex';
+      window.location.href = `mailto:${clinicEmail}?subject=${subject}&body=${body}`;
+      return;
+    }
+
+    try { await navigator.clipboard.writeText(plainText); } catch (_) {}
+    successText.textContent = 'Cererea a fost pregătită. Pentru programare, sună la 0744 774 578 sau 0753 562 721. Poți adăuga ulterior emailul clinicii în assets/site-config.js.';
+    successEl.style.display = 'flex';
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Mobile navigation
+  const navToggle = document.querySelector('.nav-toggle');
+  const primaryNav = document.getElementById('primaryNav');
+  navToggle.addEventListener('click', ()=>{
+    const open = primaryNav.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Închide meniul' : 'Deschide meniul');
+  });
+  primaryNav.querySelectorAll('a').forEach(link => link.addEventListener('click', ()=>{
+    primaryNav.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Deschide meniul');
+  }));
+</script>
+
+</body>
+</html>
